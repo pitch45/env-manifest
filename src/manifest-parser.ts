@@ -1,5 +1,6 @@
 import { readFileSync } from "fs"
 import { parse as parseYAML } from "yaml"
+import { flatten } from "ramda"
 import {
   ConfigStore,
   ConfigurationOverrides,
@@ -39,11 +40,10 @@ class ManifestParser {
   }
 
   getApplicableConfigurations(config: ManifestRecord) {
-    return (
+    return flatten(
       this.envsToFetch
         // order defines priority
-        .map((env) => [`/${env}/${config.valueFrom}`, `/${env}/generated/${config.valueFrom}`])
-        .flat()
+        .map((env) => [`/${env}/${config.valueFrom}`, `/${env}/generated/${config.valueFrom}`]),
     )
   }
 
