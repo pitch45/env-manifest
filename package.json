@@ -1,0 +1,19 @@
+{
+  "name": "env-manifest",
+  "version": "1.0.0",
+  "description": "Tool for parsing env-manifest.yml files and generating .env (dotenv) style configurations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pitch45/env-manifest.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/pitch45/env-manifest/issues"
+  },
+  "homepage": "https://github.com/pitch45/env-manifest#readme"
+}
