@@ -135,7 +135,7 @@ class ManifestParser {
         if (validConfig) {
           output.secretContainerVars.push({
             key: cfg.key,
-            value: validConfig.key,
+            valueFrom: validConfig.key,
           })
         } else {
           throw new Error(`FATAL: no values available for secret configuration key ${cfg.key}`)

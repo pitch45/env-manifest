@@ -50,21 +50,24 @@ export interface ConfigurationOverrides {
   [key: string]: string
 }
 
+export interface KeyValuePair {
+  key: string
+  value: string
+}
+
+export interface SecretKeyValuePair {
+  key: string
+  valueFrom: string
+}
+
 export interface ContainerVars {
-  // values are resolved configurations
   nonSecretContainerVars: KeyValuePair[]
-  // values are unresolved paths
-  secretContainerVars: KeyValuePair[]
+  secretContainerVars: SecretKeyValuePair[]
 }
 
 export interface ValueResolution {
   resolvedValue: string
   source: string
-}
-
-export interface KeyValuePair {
-  key: string
-  value: string
 }
 
 export interface ConfigStore {
