@@ -1,6 +1,6 @@
 {
   "name": "env-manifest",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Tool for parsing env-manifest.yml files and generating .env (dotenv) style configurations",
   "scripts": {
     "build": "tsc",
