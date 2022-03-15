@@ -11,7 +11,7 @@ import {
   ValueResolution,
 } from "./types"
 
-class ManifestParser {
+export class ManifestParser {
   storageClient: ConfigStore
   envsToFetch: string[]
   manifestData: Manifest
