@@ -1,9 +1,10 @@
 {
-  "name": "env-manifest",
+  "name": "@pitch45/env-manifest",
   "version": "0.1.0",
   "description": "Tool for parsing env-manifest.yml files and generating .env (dotenv) style configurations",
   "scripts": {
     "build": "tsc",
+    "publish": "npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
