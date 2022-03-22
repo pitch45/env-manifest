@@ -1,5 +1,31 @@
-# Manifest Parser
+# Dotenv (.env) File Manifest Parser
 
-Currently this code is meant to installed as a Git Submodule where it is needed
+This library defines a YAML format for sourcing .env file values from a data store of your choice
 
-Someday we should aim to publish this as a shared npm package, and perhaps even clean up in interface and adapters so we can open-source this package.
+## YAML format Example
+
+Input YAML file:
+```
+---
+version: 1
+configurations:
+  -
+    key: MY_FOO_KEY
+    valueFrom: foo-key
+    description: "This is a really important value"
+    defaultValue: bar
+
+```
+
+Intended output .env file:
+```
+# This is a really important value
+MY_FOO_KEY=bar
+
+```
+
+
+## More Info
+
+See the typings for [ManifestRecord](src/types.ts#L6)
+and [ConfigStore](src/types.ts#L73)
