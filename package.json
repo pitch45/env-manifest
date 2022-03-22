@@ -1,6 +1,6 @@
 {
   "name": "@pitch45/env-manifest",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tool for parsing env-manifest.yml files and generating .env (dotenv) style configurations",
   "scripts": {
     "build": "tsc",
