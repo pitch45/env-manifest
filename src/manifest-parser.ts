@@ -64,13 +64,13 @@ export class ManifestParser {
         !config.defaultValue &&
         (config.isRequired || typeof config.isRequired === "undefined")
       ) {
-        throw new Error("Required configuration has no default value and no configuration path")
+        throw new Error(`Required configuration ${config.key} has no default value and no configuration path`)
       } else if (
         !config.defaultValue &&
         (config.isRequired || typeof config.isRequired === "undefined")
       ) {
         throw new Error(
-          "Required configuration has no default value, and no valid configurations were found",
+          `Required configuration ${config.key} has no default value, and no valid configurations were found`,
         )
       }
 
