@@ -1,6 +1,6 @@
 {
   "name": "@pitch45/env-manifest",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Tool for parsing env-manifest.yml files and generating .env (dotenv) style configurations",
   "scripts": {
     "build": "tsc",
@@ -13,7 +13,7 @@
   },
   "author": "Pitch 45, Inc",
   "license": "UNLICENSED",
-  "main": "index.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bugs": {
     "url": "https://github.com/pitch45/env-manifest/issues"
