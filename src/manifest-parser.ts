@@ -16,7 +16,12 @@ export class ManifestParser {
   envsToFetch: string[]
   manifestData: Manifest
 
-  constructor(storageClient: ConfigStore, envName: string, manifestFileName: string) {
+  constructor(
+    storageClient: ConfigStore,
+    envName: string,
+    manifestFileName: string,
+    manifestFileData: string = "",
+  ) {
     this.storageClient = storageClient
     switch (envName) {
       case "prod":
@@ -29,13 +34,27 @@ export class ManifestParser {
         // order defines priority
         this.envsToFetch = [envName, "sandbox"]
     }
-    try {
-      const file = readFileSync(manifestFileName, "utf8")
-      this.manifestData = parseYAML(file) as Manifest
-      console.log("Parsed manifest file: ", manifestFileName)
-    } catch (err) {
-      console.error("FATAL: could not read or parse manifest file at", manifestFileName, err)
-      throw err
+    if (manifestFileName && !manifestFileData) {
+      try {
+        const file = readFileSync(manifestFileName, "utf8")
+        this.manifestData = parseYAML(file) as Manifest
+        console.log("Parsed manifest file: ", manifestFileName)
+      } catch (err) {
+        console.error("FATAL: could not read or parse manifest file at", manifestFileName, err)
+        throw err
+      }
+    } else if (manifestFileData && !manifestFileName) {
+      try {
+        this.manifestData = parseYAML(manifestFileData) as Manifest
+        console.log(
+          `Parsed ${manifestFileData.length} bytes and found ${this.manifestData.configurations.length} configurations`,
+        )
+      } catch (err) {
+        console.error("FATAL: could not parse manifest file data provided")
+        throw err
+      }
+    } else {
+      throw new Error("FATAL: must provide either manifestFileName or manifestFileData")
     }
   }
 
@@ -64,7 +83,9 @@ export class ManifestParser {
         !config.defaultValue &&
         (config.isRequired || typeof config.isRequired === "undefined")
       ) {
-        throw new Error(`Required configuration ${config.key} has no default value and no configuration path`)
+        throw new Error(
+          `Required configuration ${config.key} has no default value and no configuration path`,
+        )
       } else if (
         !config.defaultValue &&
         (config.isRequired || typeof config.isRequired === "undefined")
